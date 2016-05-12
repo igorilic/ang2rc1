@@ -1,0 +1,22 @@
+<div class="container col-md-offset-3 col-md-3">
+    <form [ngFormModel]="testForm" 
+          (ngSubmit)="onSubmit(testForm.value)">
+        <legend>Form title</legend>
+
+        <div class="form-group" [class.error]="!testForm.find('sku').valid && testForm.find('sku').touched">
+            <label for="skuInput">label</label>
+            <input type="text" class="form-control" id="skuInput" placeholder="Input field" #sku="ngForm" [ngFormControl]="testForm.controls['sku']">
+            
+            <label *ngIf="!sku.control.valid" class="label label-danger">
+                Sku is invalid
+            </label>
+            <label *ngIf="sku.control.hasError('required')">Sku is required</label>
+        </div>
+        
+        <div *ngIf="!testForm.valid">
+            Form is invalid
+        </div>
+        <drop-list [izvorPodataka]="partneri" [ime]="ime" [forma]="testForm"></drop-list>
+        <button type="submit" class="btn btn-primary" [disabled]="!testForm.valid">Submit</button>
+    </form>
+</div>

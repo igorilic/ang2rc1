@@ -1,0 +1,6 @@
+<div class="form-group">
+  <label>Drop List {{ime}}:</label>
+  <select class="form-control" [ngFormControl]="forma.controls['partneriSel']" >
+    <option *ngFor="let objekat of izvorPodataka" [value]="objekat.ID_PARTNER">{{ objekat.NAZIV_PARTNER }}</option>
+  </select>
+</div>
